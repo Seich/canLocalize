@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+	<head lang="en">
+		<title>canLocalize</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+	</head>
+	<body>
+		<ul>
+			<a href="#" id="en">English</a>
+			<a href="#" id="es">Español</a>
+		</ul>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="//canjs.com/release//1.1.6/can.jquery.js"></script>
+		<script src="can.i18n.js"></script>
+		
+		<script type="text/ejs" id="hi">
+			<div><%== t('greeting'); %> Sergio</div>
+		</script>
+		
+		<script>
+			var locale = {};
+			locale.en = {
+				greeting: 'Hello'
+			};
+
+			locale.es = {
+				greeting: 'Hola'
+			};
+
+			$("#es").on('click', function() {
+				i18n.update('es');
+				return;
+			});
+
+			$("#en").on('click', function() {
+				i18n.update('en');
+				return;
+			});
+
+			$('body').append(can.view('hi'));
+		</script>
+
+	</body>
+</html>
